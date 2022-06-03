@@ -1,0 +1,39 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<h1>New Post!</h1>
+
+<form action="/create" method="POST">
+    <!-- <input type=file name=file>
+    <input type=submit value=Upload> -->
+    <p>
+        <label>
+            Name of Produce:
+        </label>
+        <input type="text" name="title">
+    </p>
+    <p>
+        <label>
+            Pick Up Location: <br>
+        </label>
+        <input type="text" name="content">
+    </p>
+    <p>
+        <label>
+            Created By: <br>
+        </label>
+        <input type="text" name="created_by">
+    </p>
+    
+    <p>
+        <label>
+            Date: <br>
+        </label>
+        <input type="date" name="date" placeholder="Date format YYYY-mm-dd">
+    </p>
+    <p>
+        <input type="submit" name="submit" value="Add">
+    </p>
+</form>
+
+{% endblock %}

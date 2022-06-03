@@ -1,0 +1,11 @@
+{% extends "home.html" %}
+{% set active_page = "dash" %}
+
+{% block content %}
+{% for item in data %}
+<h1>Community</h1>
+<div>
+  <p>{{item.title}}</p>
+</div>
+{% endfor %}
+{% endblock %}
