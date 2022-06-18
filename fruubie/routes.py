@@ -13,6 +13,10 @@ from fruubie import app, db
 from fruubie.models import User, Post
 from dotenv import load_dotenv
 
+# maps stuff
+# ------------------------
+
+
 
 main = Blueprint('main', __name__)
 
