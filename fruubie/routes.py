@@ -48,7 +48,7 @@ def login_is_required(function):
 
 @main.route("/")
 def index():
-    return render_template('index.html')
+    return render_template('home.html')
 
 @main.route("/login")
 def login():

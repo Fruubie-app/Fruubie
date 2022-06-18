@@ -1,0 +1,60 @@
+
+body {
+    font-family: Arial;
+    /* padding: 10px; */
+    /* background: white; */
+  }
+  
+  
+  .header {
+    /* padding: 30px; */
+    text-align: center;
+    /* background: white; */
+  }
+  
+  .header h1 {
+    font-size: 10px;
+  }
+  
+  .topnav {
+    overflow: hidden;
+    /* background-color: white; */
+  }
+  
+  .topnav a {
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  .leftcolumn {   
+    float: left;
+    width: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100VH;
+  }
+  
+  .rightcolumn {
+    float: left;
+    width: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100VH;
+    /* background-image: url("Avo.jpg") */
+  }
+  
+  
+  
+  .card {
+    background-color: white;
+    /* background-image: url("Avo.jpg") */
+  } 
+  

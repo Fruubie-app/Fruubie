@@ -1,169 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-* {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial;
-  padding: 10px;
-  background: white;
-}
-
-
-.header {
-  padding: 30px;
-  text-align: center;
-  background: white;
-}
-
-.header h1 {
-  font-size: 10px;
-}
-
-.topnav {
-  overflow: hidden;
-  background-color: white;
-}
-
-.topnav a {
-  float: left;
-  display: block;
-  color: black;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-
-.topnav a:hover {
-  background-color: white;
-  color: black;
-}
-
-
-.leftcolumn {   
-  float: left;
-  width: 50%;
-  background-color: white;
-  padding-left: 20px;
-}
-
-.rightcolumn {
-  float: left;
-  width: 50%;
-  background-color: white;
-  padding-left: 20px;
-}
-
-.fakeimg {
-  background-color: gray;
-  width: 100%;
-  height: 100;
-  padding: 20px;
-}
-
-.card {
-  background-color: white;
-  padding: 20px;
-  margin-top: 20px;
-}
-.card2 {
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-}
-
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
-
-.container {
-  padding: 2px 16px;
-}
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.footer {
-position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 3rem; 
-  padding: 20px;
-  text-align: center;
-  background: white;
-  margin-top: 20px;
-}
-
-@media screen and (max-width: 800px) {
-  .leftcolumn, .rightcolumn {   
-    width: 100%;
-    padding: 0;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .topnav a {
-    float: none;
-    width: 100%;
-  }
-}
-</style>
+  <link rel="stylesheet" href="static/styles.css">
 </head>
 <body>
 
-<!-- <div class="header">
-  <h1>My Website</h1>
-  <p></p>
-</div> -->
+
 
 <div class="topnav">
-  <!-- <a href="#">Link</a> -->
-  <!-- <a href="#" style="float:right">Link</a> -->
-        <a class="nav-link {{ 'active' if active_page == 'home' else '' }}" href="/"><img src="partials/images/logo.jpg" alt="">home</a>
-        <!-- <a class="nav-link {{ 'active' if active_page == 'dash' else '' }}"style= "float:right" href="/community">Community</a> -->
-        <a class="nav-link {{ 'active' if active_page == 'dash' else '' }}"  style= "float:right" href="/create_post">Create Post</a>
-        <!-- <a class="nav-link {{ 'active' if active_page == 'login' else '' }}" style= "float:right" href="/logout">Logout</a> -->
+        <a class="nav-link {{ 'active' if active_page == 'home' else '' }}" href="/community"><img src="https://assets.bonappetit.com/photos/59dcf404f157aa02e71ad176/master/pass/Avo.jpg" height="50px"" alt=""></a>
         <a class="nav-link {{ 'active' if active_page == 'login' else '' }}"  style= "float:right" href="/login">Login</a>
+        <a class="nav-link {{ 'active' if active_page == 'dash' else '' }}"style= "float:right" href="/community">Community</a>
+        <a class="nav-link {{ 'active' if active_page == 'dash' else '' }}"  style= "float:right" href="/create">Create a Post</a>
+        <!-- <a class="nav-link {{ 'active' if active_page == 'login' else '' }}" style= "float:right" href="/logout">Logout</a> -->
+        
     </a>
 </div>
-
 <div class="row">
   <div class="leftcolumn">
-    
     <div class="card">
-        <div class="fakeimg" style="height:300px;"></div>
-        <!-- <img src="partials/images/logo.jpg" alt="hi" style="width:100%">
-        <div class="container">
-          <h4><b>John Doe</b></h4> 
-          <p>Architect & Engineer</p> 
-        </div> -->
+        <div class="">
+          <a href="https://assets.bonappetit.com/photos/59dcf404f157aa02e71ad176/master/pass/Avo.jpg">
+            <img src="https://assets.bonappetit.com/photos/59dcf404f157aa02e71ad176/master/pass/Avo.jpg" width="300" height="auto"">
+          </a>
+        </div>
       </div>
-    <!-- <div class="card">
-      <h2>TITLE HEADING</h2>
-      <h5>Title description, Sep 2, 2017</h5>
-      <div class="fakeimg" style="height:100px;">Image</div>
-      <p>Some text..</p>
-      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-    </div> -->
   </div>
   <div class="rightcolumn">
     <div class="card">
-      <!-- <h2>About Me</h2> -->
-      <div class="fakeimg" style="height:300px;"></div>
+      <div class="">
+        <a href="https://assets.bonappetit.com/photos/59dcf404f157aa02e71ad176/master/pass/Avo.jpg">
+          <img src="https://assets.bonappetit.com/photos/59dcf404f157aa02e71ad176/master/pass/Avo.jpg" width="300" height="auto"">
+        </a>
+      </div>
     </div>
-
   </div>
 </div>
-
-<div class="footer">
-  <h2></h2>
-</div>
-
+<!-- {% block content %}
+{% endblock %} -->
 </body>
 </html>
 
