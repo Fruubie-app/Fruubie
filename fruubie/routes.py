@@ -101,7 +101,7 @@ def get_post():
     context = {
             'post': Post.query.all()
         }
-    return render_template('community.html', **context)
+    return render_template('maps.html', **context)
 
 @main.route('/community', methods=['GET'])
 def get_posts():
@@ -109,7 +109,7 @@ def get_posts():
     context = {
         'data': my_data
     }
-    return render_template('community.html', **context)
+    return render_template('maps.html', **context)
 
 # -----------------------------------------------------------------------------------------
 
