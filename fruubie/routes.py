@@ -16,7 +16,7 @@ from dotenv import load_dotenv
 # maps stuff
 # ------------------------
 
-
+app = Flask(__name__)
 
 main = Blueprint('main', __name__)
 
@@ -113,9 +113,9 @@ def get_posts():
 
 # -----------------------------------------------------------------------------------------
 
-@main.route('/create_post', methods=['GET'])
-def create():
-    return render_template('create_post.html')
+# @main.route('/create_post', methods=['GET'])
+# def create():
+#     return render_template('create_post.html')
 
 @main.route('/user/<id>', methods=['GET'])
 def get_user(id):
@@ -131,31 +131,37 @@ def get_user(id):
     return {'success': False, 'message':'User not found'}, 400
 
 
-@main.route('/create', methods=['GET','POST'])
-def create_post():
-    if request.method == 'POST':
-        title = request.form.get('title')
-        content = request.form.get('content')
-        # img_url = request.form.get('img_url')
-        created_by = request.form.get('created_by')
-        date = request.form.get('date')
-        # print('Im in the post')
-        try:
-            # print('Im in the try')
-            new_post = {
-            'title':title,
-            'content':content,
-            'created_by':created_by,
-            'date':date
-        }
-            db.data.insert_one(new_post)
-            flash('Post created.')
-            return redirect(url_for('main.create_post'))
-        except ValueError:
-            print('there was an error: incorrect datetime format')
+@main.route('/create')
+def my_form():
     return render_template('create.html')
 
-@app.route('/community/<filename>')
-def send_uploaded_file(filename=''):
-    return send_from_directory(app.config["IMAGE_UPLOADS"], filename)
+@main.route('/create', methods=['GET','POST'])
+def create_post():
 
+    if request.method == "POST":
+        location = request.form['location']
+
+    URL = "https://geocode.search.hereapi.com/v1/geocode"
+    # location = input("Enter the location here: ") #taking user input
+    api_key = 'nknrnv6VqCUkbrsujib3tQ-pWfSZdfsfPW_vIGJ6kRA' # Acquire from developer.here.com
+    PARAMS = {'apikey':api_key,'q':location} 
+
+# sending get request and saving the response as response object 
+    r = requests.get(url = URL, params = PARAMS) 
+    data = r.json()
+#print(data)
+
+#Acquiring the latitude and longitude from JSON 
+    latitude = data['items'][0]['position']['lat']
+#print(latitude)
+    longitude = data['items'][0]['position']['lng']
+    return render_template('maps.html',apikey=api_key,latitude=latitude,longitude=longitude)
+
+
+
+
+        
+
+# @app.route('/community/<filename>')
+# def send_uploaded_file(filename=''):
+#     return send_from_directory(app.config["IMAGE_UPLOADS"], filename)s
