@@ -4,8 +4,8 @@
   <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"type="text/javascript" charset="utf-8"></script>
   <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js"type="text/javascript" charset="utf-8"></script>
   </head>
-  <body style='margin: 0'>
-  <div style="width: 50vw; height: 50vh" id="mapContainer"></div>
+  <body>
+  <div class="map"style="width: 100vw; height: 50vh;"id="mapContainer"></div>
   <script>
     // Initialize the platform object:
     var platform = new H.service.Platform({
@@ -30,6 +30,62 @@ var map = new H.Map(
 	const marker = new H.map.Marker({lat: lat, lng: lng});
 	map.addObject(marker);
   </script>
-  <p>hello</p>
+
+<style>
+    .header	.custom-logo{
+        width: 140px;
+        height: auto;
+    }
+    .spacer{
+        position: relative;
+        height: 80px;
+    }
+    
+    .grid-box{
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: repeat(3, 1fr);
+        margin-bottom: 40px;
+    }
+    
+    .cell{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0px 2px rgb(0 0 0 / 7%), 0 5px 6px rgb(0 0 0 / 16%);
+        height: 200px;
+        background-color: lightblue;
+    }
+</style>
+
+
+<div class="container">	
+    <div class="row">
+        <div class="col-12 mt-5 text-center">
+            <h1>Produce</h1>
+        </div>
+    </div>
+    
+    <div class="row mt-3">
+        <div class="col-12">
+            
+            <div class="grid-box">
+                <div class="cell"> Cell 1 </div>
+                <div class="cell"> Cell 2 </div>
+                <div class="cell"> Cell 3 </div>
+                <div class="cell"> Cell 4 </div>
+                <div class="cell"> Cell 5 </div>
+                <div class="cell"> Cell 6 </div>
+                <div class="cell"> Cell 7 </div>
+                <div class="cell"> Cell 8 </div>
+                <div class="cell"> Cell 9 </div>
+            </div>
+        </div>
+    </div>
+    <div class="spacer"></div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
