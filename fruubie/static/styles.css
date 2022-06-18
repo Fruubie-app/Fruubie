@@ -32,7 +32,7 @@ body {
   
   .leftcolumn {   
     float: left;
-    width: 50%;
+    width: 33%;
     background-color: white;
     display: flex;
     align-items: center;
@@ -42,7 +42,7 @@ body {
   
   .rightcolumn {
     float: left;
-    width: 50%;
+    width: 33%;
     background-color: white;
     display: flex;
     align-items: center;
@@ -51,7 +51,16 @@ body {
     /* background-image: url("Avo.jpg") */
   }
   
-  
+  .middlecolumn {
+    float: middle;
+    width: 33%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100VH;
+    /* background-image: url("Avo.jpg") */
+  }
   
   .card {
     background-color: white;
