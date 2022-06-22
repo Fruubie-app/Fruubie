@@ -9,8 +9,8 @@ from google_auth_oauthlib.flow import Flow
 from pip._vendor import cachecontrol
 import google.auth.transport
 from pymongo import MongoClient
-from fruubie import app, db
-from fruubie.models import User, Post
+from fruubie import app, db, users, posts
+# from fruubie.models import User, Post
 from dotenv import load_dotenv
 
 # maps stuff
@@ -54,6 +54,13 @@ def login_is_required(function):
 def index():
     return render_template('home.html')
 
+@main.route("/test")
+def test_route():
+    post = {'username': 'ser'}
+    posts.insert_one(post)
+    return 'a'
+    # return session["google_id"]
+
 @main.route("/login")
 def login():
     authorization_url, state = flow.authorization_url()
@@ -95,21 +102,23 @@ def home():
     # return f"Hello {session['name']}! <br/> <a href='/logout'><button>Logout</button></a>"
     return render_template("home.html") 
 
-@main.route("/community/<location>")
-# @login_is_required
-def get_post():
+@main.route('/posts', methods=['GET'])
+def posts_all():
+    posts = posts.find({})
+    return posts
+
+@main.route("/community/<location>", methods=['GET'])
+def posts_by_location(location):
+    posts = posts.find({'location': location})
     context = {
-            'post': Post.query.all()
-        }
-    return render_template('maps.html', **context)
+        'data': posts
+    }
+    return render_template('maps.html', posts)
 
 @main.route('/community', methods=['GET'])
 def get_posts():
-    my_data = db.data.find()
-    context = {
-        'data': my_data
-    }
-    return render_template('maps.html', **context)
+    posts = posts.find({})
+    return render_template('maps.html', posts)
 
 # -----------------------------------------------------------------------------------------
 
@@ -137,18 +146,20 @@ def my_form():
 
 @main.route('/create', methods=['GET','POST'])
 def create_post():
+    # if request.method == "POST":
+    location = request.form['location']
+    post = {
+        'title': request.form['title'],
+        'content': request.form['content'],
+        'date': request.form['date'],
+        'quantity': request.form['quantity'],
+        'location': request.form['location'],
+        'user_id': session["google_id"]
+        # adding user id (authentication, google id, monngo id) render db.post.find. find signup and 
+    }
 
-    if request.method == "POST":
-        location = request.form['location']
-        post = {
-            'title': request.form['title'],
-            'content': request.form['content'],
-            'date': request.form['date'],
-            'quantity': request.form['quantity'],
-            'location': request.form['location']
-            # adding user id (authentication, google id, monngo id) render db.post.find
-        }
-        db.posts.insert_one(post)
+    db.posts.insert_one(post)
+
     URL = "https://geocode.search.hereapi.com/v1/geocode"
     # location = input("Enter the location here: ") #taking user input
     api_key = 'nknrnv6VqCUkbrsujib3tQ-pWfSZdfsfPW_vIGJ6kRA' # Acquire from developer.here.com
@@ -164,7 +175,7 @@ def create_post():
 #print(latitude)
     longitude = data['items'][0]['position']['lng']
     # return render_template('maps.html',apikey=api_key,latitude=latitude,longitude=longitude)
-    return redirect(url_for('/community'))
+    return redirect(url_for('main.posts_by_location', location=location))
 
 
 
