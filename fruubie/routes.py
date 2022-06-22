@@ -95,7 +95,7 @@ def home():
     # return f"Hello {session['name']}! <br/> <a href='/logout'><button>Logout</button></a>"
     return render_template("home.html") 
 
-@main.route("/community")
+@main.route("/community/<location>")
 # @login_is_required
 def get_post():
     context = {
@@ -140,7 +140,15 @@ def create_post():
 
     if request.method == "POST":
         location = request.form['location']
-
+        post = {
+            'title': request.form['title'],
+            'content': request.form['content'],
+            'date': request.form['date'],
+            'quantity': request.form['quantity'],
+            'location': request.form['location']
+            # adding user id (authentication, google id, monngo id) render db.post.find
+        }
+        db.posts.insert_one(post)
     URL = "https://geocode.search.hereapi.com/v1/geocode"
     # location = input("Enter the location here: ") #taking user input
     api_key = 'nknrnv6VqCUkbrsujib3tQ-pWfSZdfsfPW_vIGJ6kRA' # Acquire from developer.here.com
@@ -155,8 +163,8 @@ def create_post():
     latitude = data['items'][0]['position']['lat']
 #print(latitude)
     longitude = data['items'][0]['position']['lng']
-    return render_template('maps.html',apikey=api_key,latitude=latitude,longitude=longitude)
-
+    # return render_template('maps.html',apikey=api_key,latitude=latitude,longitude=longitude)
+    return redirect(url_for('/community'))
 
 
 
