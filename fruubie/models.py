@@ -7,9 +7,11 @@ class Post(db.Model):
     title = db.Column(db.String, nullable=False)
     content = db.Column(db.String, nullable=False)
     # img_url = db.Column(db.String(), nullable=False)
-    created_by = db.Column(db.Integer, db.ForeignKey('Users.id'), nullable=False) # This is a GOOGLE ID
-    date = db.Column(db.String(), nullable=False)
-    user = db.relationship('User', foreign_keys=[created_by])
+    # created_by = db.Column(db.Integer, db.ForeignKey('Users.id'), nullable=False) # This is a GOOGLE ID
+    date = db.Column(db.Date, nullable=False)
+    quantity = db.Column(db.Integer, nullable=False)
+    # user_id = db.Integer(db.Integer, nullable=False)
+    location = db.Column(db.String, nullable=False)
 
 class User(db.Model):
     __tablename__ = 'Users'
