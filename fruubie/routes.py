@@ -22,7 +22,7 @@ main = Blueprint('main', __name__)
 
 MONGO_PASS = os.getenv('MONGO_PASS')
 
-client = MongoClient(f"mongodb+srv://alaJream:{MONGO_PASS}@cluster0.62z5r.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+client = MongoClient(f"mongodb+srv://Bonehead474:{MONGO_PASS}@cluster0.62z5r.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 db = client.test
 
 
