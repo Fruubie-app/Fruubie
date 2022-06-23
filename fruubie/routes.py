@@ -160,9 +160,9 @@ def create_post():
 
     db.posts.insert_one(post)
 
-    URL = "https://geocode.search.hereapi.com/v1/geocode"
+
     # location = input("Enter the location here: ") #taking user input
-    api_key = 'nknrnv6VqCUkbrsujib3tQ-pWfSZdfsfPW_vIGJ6kRA' # Acquire from developer.here.com
+    api_key = os.getenv('GEOAPI')
     PARAMS = {'apikey':api_key,'q':location} 
 
 # sending get request and saving the response as response object 
